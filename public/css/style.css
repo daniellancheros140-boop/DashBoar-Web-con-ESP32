@@ -1,0 +1,783 @@
+/* ==========================================
+   VARIABLES DEL TEMA CLARO
+   ========================================== */
+
+:root {
+
+    --background:
+        #f1f3f6;
+
+    --surface:
+        #ffffff;
+
+    --surface-secondary:
+        #f7f8fa;
+
+    --border:
+        #dfe3e8;
+
+    --text:
+        #20242a;
+
+    --text-secondary:
+        #6d737c;
+
+    --grid:
+        #e1e4e8;
+
+    --accent:
+        #5b7cfa;
+
+    --button-hover:
+        #eef1ff;
+
+    --shadow:
+        0 4px 18px rgba(0, 0, 0, 0.06);
+    --shadow-blue:
+        0 3px 9px rgba(91, 124, 250, 0.3);
+}
+
+
+/* ==========================================
+   VARIABLES DEL TEMA OSCURO
+   ========================================== */
+
+body.dark-theme {
+
+    --background:
+        #111318;
+
+    --surface:
+        #191c22;
+
+    --surface-secondary:
+        #22262e;
+
+    --border:
+        #2c3038;
+
+    --text:
+        #ffffff;
+
+    --text-secondary:
+        #9da3ad;
+
+    --grid:
+        #292d35;
+
+    --accent:
+        #718cff;
+
+    --button-hover:
+        #292f45;
+
+    --shadow:
+        0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background-color:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* ==========================================
+   BARRA SUPERIOR
+   ========================================== */
+
+.top-bar {
+
+    width: 100%;
+
+    min-height: 90px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        18px 30px;
+
+    background-color:
+        var(--surface);
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* ==========================================
+   MARCA
+   ========================================== */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.app-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+}
+
+
+.title-container h1 {
+
+    font-size:
+        28px;
+
+    font-weight:
+        600;
+}
+
+
+.title-container p {
+
+    margin-top:
+        5px;
+
+    font-size:
+        14px;
+
+    color:
+        var(--text-secondary);
+}
+
+
+/* ==========================================
+   CONTROLES SUPERIORES
+   ========================================== */
+
+.header-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.status-indicator {
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    border-radius:
+        50%;
+
+    background-color:
+        #e45757;
+}
+
+
+/* ==========================================
+   BOTÓN DE TEMA
+   ========================================== */
+
+.theme-button {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    background-color:
+        var(--surface-secondary);
+
+    color:
+        var(--text);
+
+    font-size:
+        18px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.theme-button:hover {
+
+    background-color:
+        var(--button-hover);
+
+    transform:
+        scale(1.05);
+}
+
+
+/* ==========================================
+   SELECTOR DE PERÍODO
+   ========================================== */
+
+.time-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    padding:
+        22px 25px 5px;
+}
+
+
+.period-selector {
+
+    display: flex;
+
+    gap: 5px;
+
+    padding: 5px;
+
+    background-color:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+}
+
+
+.period-button {
+
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-secondary);
+
+    padding:
+        9px 18px;
+
+    border-radius:
+        8px;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.period-button:hover {
+
+    background-color:
+        var(--button-hover);
+
+    color:
+        var(--text);
+}
+
+
+.period-button.active {
+
+    background-color:
+        var(--accent);
+
+    color:
+        #ffffff;
+}
+
+
+/* ==========================================
+   DASHBOARD
+   ========================================== */
+
+.dashboard {
+
+    width:
+        100%;
+
+    padding:
+        20px 25px 30px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        20px;
+}
+
+
+/* ==========================================
+   CONTENEDOR DE GRÁFICA
+   ========================================== */
+
+.chart-container {
+
+    min-width:
+        0;
+
+    padding:
+        20px;
+
+    background-color:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.chart-container:hover {
+
+
+    box-shadow:
+        var(--shadow-blue);
+}
+
+/* ==========================================
+   ENCABEZADO DE GRÁFICA
+   ========================================== */
+
+.chart-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        15px;
+}
+
+
+.chart-header h2 {
+
+    font-size:
+        18px;
+
+    font-weight:
+        500;
+}
+
+/* ==========================================
+   ACCIONES DE LA GRÁFICA
+   ========================================== */
+
+.chart-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* ==========================================
+   BOTÓN AMPLIAR
+   ========================================== */
+
+.expand-button {
+
+    width: 30px;
+
+    height: 30px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    background-color:
+        var(--surface-secondary);
+
+    color:
+        var(--text-secondary);
+
+    font-size: 17px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.expand-button:hover {
+
+    background-color:
+        var(--button-hover);
+
+    color:
+        var(--text);
+
+    transform:
+        scale(1.08);
+}
+
+/* ==========================================
+   GRÁFICA AMPLIADA
+   ========================================== */
+
+.chart-container.expanded {
+
+    position: fixed;
+
+    z-index: 1000;
+
+    top: 20px;
+
+    left: 20px;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    width: auto;
+
+    height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    background-color:
+        var(--surface);
+
+    box-shadow:
+        0 10px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+.chart-container.expanded .chart-wrapper {
+
+    flex: 1;
+
+    height: auto;
+
+    min-height: 0;
+}
+
+
+/* Fondo detrás de la gráfica ampliada */
+
+body.chart-expanded::before {
+
+    content: "";
+
+    position: fixed;
+
+    z-index: 999;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+}
+
+.chart-description {
+
+    margin-top:
+        4px;
+
+    font-size:
+        12px;
+
+    color:
+        var(--text-secondary);
+}
+
+
+.unit {
+
+    font-size:
+        14px;
+
+    color:
+        var(--text-secondary);
+
+    background-color:
+        var(--surface-secondary);
+
+    padding:
+        5px 9px;
+
+    border-radius:
+        6px;
+}
+
+
+/* ==========================================
+   ÁREA DE GRÁFICA
+   ========================================== */
+
+.chart-wrapper {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        280px;
+}
+
+
+/* ==========================================
+   ESTADO DEL ROBOT (DATOS DE LA APP)
+   ========================================== */
+
+.estado-robot-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    height: 220px;
+}
+
+
+.estado-robot-numero {
+
+    font-size: 48px;
+
+    font-weight: 800;
+
+    color: var(--accent);
+
+    line-height: 1;
+}
+
+
+.estado-robot-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 24px;
+
+    background-color: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+.estado-robot-direccion-fila {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.estado-robot-direccion-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 16px;
+
+    background-color: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
+}
+
+
+.estado-robot-flecha {
+
+    font-size: 16px;
+
+    color: var(--accent);
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    .dashboard {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .top-bar {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            15px;
+
+        padding:
+            20px;
+    }
+
+
+    .header-controls {
+
+        width:
+            100%;
+
+        justify-content:
+            space-between;
+    }
+
+
+    .period-selector {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .period-button {
+
+        flex:
+            1;
+    }
+
+
+    .dashboard {
+
+        padding:
+            15px;
+    }
+
+
+    .chart-container {
+
+        padding:
+            15px;
+    }
+
+
+    .chart-wrapper {
+
+        height:
+            240px;
+    }
+
+}

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#f4f5f7">
+
+    <!-- Icono de la página -->
+    <link rel="icon"
+          type="image/png"
+          href="assets/icono.png">
+
+    <title>ESP32 Dashboard</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==============================
+         BARRA SUPERIOR
+         ============================== -->
+
+    <header class="top-bar">
+
+        <div class="brand">
+
+            <img
+                src="assets/icono.png"
+                alt="ESP32"
+                class="app-icon"
+            >
+
+            <div class="title-container">
+
+                <h1>Dashboard STEP</h1>
+
+                <p>
+                    Monitorización de variables ambientales en tiempo real
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-controls">
+
+            <!-- Botón de tema -->
+
+            <button
+                id="theme-button"
+                class="theme-button"
+                title="Cambiar tema">
+
+                ☀️
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         CONTROLES DE TIEMPO
+         ============================== -->
+
+    <section class="time-controls">
+
+        <div class="period-selector">
+
+            <button
+                class="period-button active"
+                data-period="day">
+
+                1 Día
+
+            </button>
+
+
+            <button
+                class="period-button"
+                data-period="week">
+
+                1 Semana
+
+            </button>
+
+
+            <button
+                class="period-button"
+                data-period="month">
+
+                1 Mes
+
+            </button>
+
+
+            <button
+                class="period-button"
+                data-period="year">
+
+                1 Año
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         DASHBOARD
+         ============================== -->
+
+    <main class="dashboard">
+
+        <!-- TEMPERATURA -->
+
+        <section class="chart-container">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <h2>Temperatura</h2>
+
+                    <p class="chart-description">
+                        Temperatura ambiental
+                    </p>
+
+                </div>
+
+                <div class="chart-actions">
+
+                    <span class="unit">
+                        °C
+                    </span>
+
+                    <button
+                        class="expand-button"
+                        title="Ampliar gráfica"
+                        aria-label="Ampliar gráfica">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="temperatureChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- HUMEDAD -->
+
+        <section class="chart-container">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <h2>Humedad</h2>
+
+                    <p class="chart-description">
+                        Humedad relativa
+                    </p>
+
+                </div>
+
+                <div class="chart-actions">
+
+                    <span class="unit">
+                        %
+                    </span>
+
+                    <button
+                        class="expand-button"
+                        title="Ampliar gráfica"
+                        aria-label="Ampliar gráfica">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="humidityChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- DISTANCIA -->
+
+        <section class="chart-container">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <h2>Distancia</h2>
+
+                    <p class="chart-description">
+                        Sensor ultrasónico (obstáculos)
+                    </p>
+
+                </div>
+
+                <div class="chart-actions">
+
+                    <span class="unit">
+                        cm
+                    </span>
+
+                    <button
+                        class="expand-button"
+                        title="Ampliar gráfica"
+                        aria-label="Ampliar gráfica">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="distanceChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALTURA -->
+
+        <section class="chart-container">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <h2>Altura</h2>
+
+                    <p class="chart-description">
+                        Altura relativa (BMP280)
+                    </p>
+
+                </div>
+
+                <div class="chart-actions">
+
+                    <span class="unit">
+                        m
+                    </span>
+
+                    <button
+                        class="expand-button"
+                        title="Ampliar gráfica"
+                        aria-label="Ampliar gráfica">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="altitudeChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESTADO DE MOVIMIENTO (DATOS DE LA APP) -->
+
+        <section class="chart-container">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <h2>Estado del robot (app)</h2>
+
+                    <p class="chart-description">
+                        Último dato recibido desde la app vía WiFi
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="estado-robot-wrapper">
+
+                <span class="estado-robot-numero" id="estado-robot-numero">
+                    0
+                </span>
+
+                <div class="estado-robot-badge" id="estado-robot-badge">
+
+                    <span
+                        class="status-indicator"
+                        id="estado-robot-indicator">
+                    </span>
+
+                    <span id="estado-robot-texto">
+                        Detenido
+                    </span>
+
+                </div>
+
+                <div class="estado-robot-direccion-fila">
+
+                    <div class="estado-robot-direccion-item" id="estado-avance-item">
+
+                        <span class="estado-robot-flecha" id="estado-avance-flecha">
+                            ■
+                        </span>
+
+                        <span id="estado-avance-texto">
+                            Detenido
+                        </span>
+
+                    </div>
+
+                    <div class="estado-robot-direccion-item" id="estado-giro-item">
+
+                        <span class="estado-robot-flecha" id="estado-giro-flecha">
+                            •
+                        </span>
+
+                        <span id="estado-giro-texto">
+                            Centro
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p class="chart-description" id="estado-robot-timestamp">
+                    Sin datos recibidos todavía
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- JavaScript de la aplicación -->
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
